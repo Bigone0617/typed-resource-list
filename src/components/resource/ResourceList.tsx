@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 
 const ResourceList: React.FC<{}> = () => {
   const { resources } = useStore();
+
   return (
     <List>
       <Toaster />

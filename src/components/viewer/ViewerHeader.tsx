@@ -6,7 +6,7 @@ const ViewerHeader = () => {
   const store = useStore();
   return (
     <Header>
-      <Url>{store.viewUrl}</Url>
+      <Url>{store.viewer.resource}</Url>
       <div onClick={() => store.setViewUrl("")}>
         <TypedIcon icon="close_19" style={{ padding: "15px" }} />
       </div>

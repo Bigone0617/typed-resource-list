@@ -1,10 +1,16 @@
 import create from "zustand";
 import { v4 as uuidv4 } from "uuid";
 
+export enum ResourceType {
+  URL = "URL",
+  IMG = "IMG",
+}
 export interface Resource {
   id: string;
   // origin url or img
   resource: string;
+  // url or imgage
+  type: ResourceType | null;
   edit: boolean;
   // show text
   title: string;
@@ -30,37 +36,62 @@ const toggleResource = (resources: Resource[], id: string): Resource[] =>
 const removeResource = (resources: Resource[], id: string): Resource[] =>
   resources.filter((resource) => resource.id !== id);
 
-const addResource = (resources: Resource[], resoure: string): Resource[] => [
+const addResource = (
+  resources: Resource[],
+  resoure: string,
+  title?: string
+): Resource[] => [
   ...resources,
   {
     id: uuidv4(),
+    type: title ? ResourceType.IMG : ResourceType.URL,
     resource: resoure,
-    title: resoure,
+    title: title ?? resoure,
     edit: false,
     createdTime: new Date().toISOString(),
   },
 ];
 
+const setViewer = (resources: Resource[], id: string): Resource =>
+  resources.find((resource) => resource.id === id) ?? {
+    id: "",
+    title: "",
+    resource: "",
+    type: null,
+    edit: false,
+    createdTime: "",
+  };
+// const addImgResource = (resources: Resource[], )
+
 // Zustand
 type Store = {
   resources: Resource[];
   newResource: string;
-  addResource: () => void;
+  viewer: Resource;
+  addResource: (title?: string) => void;
   setNewResource: (resource: string) => void;
   update: (id: string, title: string) => void;
   toggle: (id: string) => void;
   remove: (id: string) => void;
-  viewUrl: string;
-  setViewUrl: (viewUrl: string) => void;
+  setView: (id: string) => void;
+  removeView: () => void;
 };
 
 const useStore = create<Store>((set) => ({
   resources: [],
   newResource: "",
-  addResource() {
+  viewer: {
+    id: "",
+    title: "",
+    resource: "",
+    type: null,
+    edit: false,
+    createdTime: "",
+  },
+  addResource(title?: string) {
     set((state) => ({
       ...state,
-      resources: addResource(state.resources, state.newResource),
+      resources: addResource(state.resources, state.newResource, title),
       newResource: "",
     }));
   },
@@ -88,13 +119,25 @@ const useStore = create<Store>((set) => ({
       resources: removeResource(state.resources, id),
     }));
   },
-  viewUrl: "",
-  setViewUrl(viewUrl: string) {
+  setView(id: string) {
     set((state) => ({
       ...state,
-      viewUrl: viewUrl,
-    }));
+      state.viewer: setViewer(state.resource, id)
+    }))
   },
+  removeView(){
+    set((state) => ({
+      ...state,
+      state.viewer:  {
+        id: "",
+        title: "",
+        resource: "",
+        type: null,
+        edit: false,
+        createdTime: "",
+      }
+    }))
+  }
 }));
 
 export default useStore;
