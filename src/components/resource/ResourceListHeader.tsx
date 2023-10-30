@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import ResourceUrlInputButton from "./ResourceUrlInputButton";
 import ResourceUrlInput from "./ResourceUrlInput";
 import ResourceImageInput from "./ResourceImageInput";
 import styled from "styled-components";
+import useStore from "../../store/store";
 
 const ResourceListHeader: React.FC<{}> = () => {
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const toggleShowUrlInput = () => {
+    setShowUrlInput(!showUrlInput);
+  }
+
   return (
     <ListHeader>
-      <ResourceUrlInput />
+      <ResourceUrlInputButton showInput={toggleShowUrlInput}/>
       <ResourceImageInput />
+      {showUrlInput ? <ResourceUrlInput onClose={toggleShowUrlInput}/> : null}
     </ListHeader>
   );
 };
+
+
 
 const ListHeader = styled.div`
   display: flex;

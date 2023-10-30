@@ -21,7 +21,7 @@ const ListLayout = styled.div`
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  background: var(--gray-gray-97, #f7f7f7);
+  background: rgba(229, 229, 229, 1)
 `;
 
 export default ResourceListLayout;
