@@ -1,18 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import ViewerHeader from "../components/viewer/ViewerHeader";
+import useStore from "../store/store";
+import Viewer from "../components/viewer/Viewer";
 
 const ViewerLayout: React.FC<{}> = () => {
-  return <Viewer></Viewer>;
+  const store = useStore();
+  return (
+    <ViewerWrapper>
+      {store.viewUrl !== "" ? (
+        <>
+          <ViewerHeader />
+          <Viewer />
+        </>
+      ) : null}
+    </ViewerWrapper>
+  );
 };
 
-const Viewer = styled.div`
-  display: flex;
+const ViewerWrapper = styled.div`
   width: 919px;
   height: 800px;
-  padding-bottom: 0px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
 `;
 
 export default ViewerLayout;

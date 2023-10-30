@@ -3,24 +3,21 @@ import ResourceUrlInputButton from "./ResourceUrlInputButton";
 import ResourceUrlInput from "./ResourceUrlInput";
 import ResourceImageInput from "./ResourceImageInput";
 import styled from "styled-components";
-import useStore from "../../store/store";
 
 const ResourceListHeader: React.FC<{}> = () => {
   const [showUrlInput, setShowUrlInput] = useState(false);
   const toggleShowUrlInput = () => {
     setShowUrlInput(!showUrlInput);
-  }
+  };
 
   return (
     <ListHeader>
-      <ResourceUrlInputButton showInput={toggleShowUrlInput}/>
+      <ResourceUrlInputButton showInput={toggleShowUrlInput} />
       <ResourceImageInput />
-      {showUrlInput ? <ResourceUrlInput onClose={toggleShowUrlInput}/> : null}
+      {showUrlInput ? <ResourceUrlInput onClose={toggleShowUrlInput} /> : null}
     </ListHeader>
   );
 };
-
-
 
 const ListHeader = styled.div`
   display: flex;

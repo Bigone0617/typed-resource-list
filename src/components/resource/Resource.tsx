@@ -1,53 +1,51 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { TypedIcon } from "typed-design-system";
-import useStore, {Resource} from '../../store/store';
+import useStore, { Resource } from "../../store/store";
 
-
-const ResourceDetail: React.FC<Resource> = ({...props}) => {
+const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
   const store = useStore();
-  const [isEdit, setIsEdit] = useState<boolean>(props.edit);
-  const toggleEditMode = (enable: boolean) => {
-    setIsEdit(enable);
-  }
   const [title, setTitle] = useState<string>(props.title);
 
-  const onSubmitHandler = async(e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     store.update(props.id, title);
-    toggleEditMode(false);
-  }
+    store.toggle(props.id);
+  };
+
+  const onClickResource = () => {
+    store.setViewUrl(props.resource);
+  };
 
   return (
     <ResourceItem>
-      <TextArea>
-        {
-          isEdit ? (<>
+      <TextArea onClick={onClickResource}>
+        {props.edit ? (
+          <>
             <FormWrapper>
               <form onSubmit={(e) => onSubmitHandler(e)}>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   style={{
-                    display: 'flex',
-                    width: '236px',
-                    height: '16px',
-                    alignItems: 'center',
-                    border: '1px solid var(--system-blue-50, #38A5E1)',
-                    background: 'var(--gray-gray-97, #F7F7F7)',
-                    }}
+                    display: "flex",
+                    width: "236px",
+                    height: "16px",
+                    alignItems: "center",
+                    border: "1px solid var(--system-blue-50, #38A5E1)",
+                    background: "var(--gray-gray-97, #F7F7F7)",
+                  }}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                >
-                </input>
+                ></input>
               </form>
             </FormWrapper>
-          </>) : (
-            <TextRead>{props.title}</TextRead>
-          )
-        }
+          </>
+        ) : (
+          <TextRead>{props.title}</TextRead>
+        )}
       </TextArea>
       <ButtonArea>
-        <div onClick={() => toggleEditMode(true)}>
+        <div onClick={() => store.toggle(props.id)}>
           <TypedIcon icon="edit_19" style={{ fontSize: "19px" }} />
         </div>
         <div onClick={() => store.remove(props.id)}>
@@ -61,7 +59,7 @@ const ResourceDetail: React.FC<Resource> = ({...props}) => {
 const TextArea = styled.div`
   width: 250px;
   height: 60px;
-`
+`;
 
 const FormWrapper = styled.div`
   display: flex;
@@ -70,9 +68,9 @@ const FormWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  border: 1px solid var(--system-blue-50, #38A5E1);
-  background: var(--gray-gray-97, #F7F7F7);
-`
+  border: 1px solid var(--system-blue-50, #38a5e1);
+  background: var(--gray-gray-97, #f7f7f7);
+`;
 
 const ResourceItem = styled.div`
   width: 260px;
@@ -84,14 +82,22 @@ const ResourceItem = styled.div`
 
 const TextRead = styled.div`
   width: 236px;
+  height: 35px;
   color: #000;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  display: flex;
   padding: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 const ButtonArea = styled.div`

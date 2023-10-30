@@ -27,7 +27,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
           <Input
             id="image-upload"
             type="file"
-            accept="image/png, image/jpeg"
+            accept="image/png, image/jpg"
             onClick={(e) => {
               e.currentTarget.value = "";
             }}
