@@ -35,7 +35,9 @@ const List = styled.div`
   overflow: scroll;
   justify-content: flex-start;
   align-items: center;
-  width: 100%
+  width: 100%;
+  height: 95%;
+  padding-bottom: 10px;
 `;
 
 export default ResourceList;

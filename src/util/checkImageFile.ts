@@ -5,9 +5,13 @@ const checkImageFile = async (file: File) => {
   await randomDelay();
 
   if (randomSuccess()) {
-    return await readImageFile(file);
+    try {
+      return await readImageFile(file);
+    } catch (err: any) {
+      throw new Error(err?.message);
+    }
   } else {
-    throw new Error("랜던 실패")
+    throw new Error("이미지 업로드 실패");
   }
 };
 

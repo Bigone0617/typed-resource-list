@@ -12,14 +12,14 @@ const ResourceImageInput: React.FC<{}> = () => {
 
     if (!files || files?.length === 0) return;
 
-    filesToArray.forEach(async (file) => {
+    filesToArray.forEach(async (file: File) => {
       try {
-        const fileData = await checkImageFile(file);
+        const fileData: string = await checkImageFile(file);
         store.setNewResource(fileData);
         store.addResource(file.name);
         toast.success("이미지 업로드 성공");
-      } catch (err) {
-        toast.error("이미지 업로드 실패");
+      } catch (err: any) {
+        toast.error(err?.message);
       }
     });
 

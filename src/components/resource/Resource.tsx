@@ -16,11 +16,11 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
   const onClickResource = () => {
     store.setView(props.id);
   };
-  
+
   const onClickRemove = () => {
-    if(store.viewer?.id === props.id) store.removeView();
+    if (store.viewer?.id === props.id) store.removeView();
     store.remove(props.id);
-  }
+  };
 
   return (
     <ResourceItem>
@@ -33,6 +33,8 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                  autoFocus={true}
+                  onBlur={() => store.toggle(props.id)}
                 ></TitleInput>
               </Form>
             </FormWrapper>
@@ -79,16 +81,16 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 95%;
-`
+`;
 
 const TitleInput = styled.input`
   display: flex;
   width: 100%;
   height: 16px;
   align-items: center;
-  border: 1px solid var(--system-blue-50, #38A5E1);
-  background: var(--gray-gray-97, #F7F7F7);
-`
+  border: 1px solid var(--system-blue-50, #38a5e1);
+  background: var(--gray-gray-97, #f7f7f7);
+`;
 
 const TextRead = styled.div`
   width: 90%;

@@ -4,16 +4,15 @@
 - emotion 최신 버전으로 설치하면 naming miss match 에러 발생.
 - typed design system에서 요구하는 emotion/core 10.x 버전으로 변경하면 정상 작동.
 
-
 **modules**
 
 - typed design system : icon
-    - emotion
+  - emotion
 - zustand : 상태 관리
 - react-hot-toast : toast
 - uuid : resource id 생성
 
-
 **추가 기능**
-- 삭제하려는 리소스가 뷰어에 열려 있으면, 리소스 삭제 시 뷰어 닫음
 
+- 삭제하려는 리소스가 뷰어에 열려 있으면, 리소스 삭제 시 뷰어 닫음
+- 리소스 업로드 중 로딩 토스트

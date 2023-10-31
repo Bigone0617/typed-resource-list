@@ -7,12 +7,9 @@ export enum ResourceType {
 }
 export interface Resource {
   id: string;
-  // origin url or img
   resource: string;
-  // url or imgage
   type: ResourceType | null;
   edit: boolean;
-  // show text
   title: string;
   createdTime: string;
 }
@@ -27,6 +24,7 @@ const updateResource = (
     title: resource.id === id ? title : resource.title,
   }));
 
+// toggle edit mode
 const toggleResource = (resources: Resource[], id: string): Resource[] =>
   resources.map((resource) => ({
     ...resource,
@@ -53,7 +51,7 @@ const addResource = (
 ];
 
 const setViewer = (resources: Resource[], id: string): Resource | null =>
-  resources.find((resource) => resource.id === id) ?? null
+  resources.find((resource) => resource.id === id) ?? null;
 
 // Zustand
 type Store = {
@@ -108,14 +106,14 @@ const useStore = create<Store>((set) => ({
     set((state) => ({
       ...state,
       viewer: setViewer(state.resources, id),
-    }))
+    }));
   },
-  removeView(){
+  removeView() {
     set((state) => ({
       ...state,
-      viewer: null
-    }))
-  }
+      viewer: null,
+    }));
+  },
 }));
 
 export default useStore;

@@ -22,7 +22,7 @@ const ResourceListHeader: React.FC<{}> = () => {
 const ListHeader = styled.div`
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 5%;
   justify-content: center;
   align-items: center;
   gap: 10px;

@@ -43,6 +43,7 @@ const ResourceUrlInput: React.FC<UrlInputProps> = ({ onClose }) => {
           value={store.newResource}
           onChange={(e) => store.setNewResource(e.target.value)}
           onBlur={onClose}
+          autoFocus={true}
         ></UrlInput>
       </Form>
     </FormWrapper>
@@ -67,16 +68,16 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 95%;
-`
+`;
 
 const UrlInput = styled.input`
   display: flex;
   width: 100%;
   height: 30px;
-  alignItems: center;
-  flexShrink: 0;
-  borderRadius: 3px;
-  border: 1px solid var(--system-blue-50, #38A5E1);
-  background: var(--gray-gray-97, #F7F7F7);
-`
+  alignitems: center;
+  flexshrink: 0;
+  borderradius: 3px;
+  border: 1px solid var(--system-blue-50, #38a5e1);
+  background: var(--gray-gray-97, #f7f7f7);
+`;
 export default ResourceUrlInput;
