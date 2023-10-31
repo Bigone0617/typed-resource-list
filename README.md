@@ -18,3 +18,6 @@ npm run start
 
 ### 완성된 프로젝트 사진 링크
 https://github.com/Bigone0617/typed-resource-list/issues/1
+
+### soluton
+https://github.com/Bigone0617/typed-resource-list/blob/main/SOLUTION.md
