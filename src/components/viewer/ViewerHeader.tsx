@@ -6,8 +6,8 @@ const ViewerHeader = () => {
   const store = useStore();
   return (
     <Header>
-      <Url>{store.viewer.resource}</Url>
-      <div onClick={() => store.setViewUrl("")}>
+      <Url>{store.viewer?.resource}</Url>
+      <div onClick={() => store.removeView()}>
         <TypedIcon icon="close_19" style={{ padding: "15px" }} />
       </div>
     </Header>

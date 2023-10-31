@@ -61,7 +61,7 @@ const ResourceUrlInput: React.FC<UrlInputProps> = ({ onClose }) => {
 
 const FormWrapper = styled.div`
   position: absolute;
-  bottom: 770px;
+  bottom: 880px;
   left: 5px;
   display: flex;
   width: 260px;

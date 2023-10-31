@@ -14,7 +14,7 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
   };
 
   const onClickResource = () => {
-    store.setViewUrl(props.resource);
+    store.setView(props.id);
   };
 
   return (

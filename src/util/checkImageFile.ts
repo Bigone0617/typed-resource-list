@@ -7,7 +7,7 @@ const checkImageFile = async (file: File) => {
   if (randomSuccess()) {
     return await readImageFile(file);
   } else {
-    return "";
+    throw new Error("랜던 실패")
   }
 };
 

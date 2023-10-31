@@ -32,6 +32,7 @@ const List = styled.div`
   display: flex;
   gap: 5px;
   flex-direction: column;
+  overflow: scroll;
 `;
 
 export default ResourceList;

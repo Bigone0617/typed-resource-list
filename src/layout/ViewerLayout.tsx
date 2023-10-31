@@ -8,7 +8,7 @@ const ViewerLayout: React.FC<{}> = () => {
   const store = useStore();
   return (
     <ViewerWrapper>
-      {store.viewUrl !== "" ? (
+      {store.viewer !== null ? (
         <>
           <ViewerHeader />
           <Viewer />

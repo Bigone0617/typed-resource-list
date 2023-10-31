@@ -52,22 +52,14 @@ const addResource = (
   },
 ];
 
-const setViewer = (resources: Resource[], id: string): Resource =>
-  resources.find((resource) => resource.id === id) ?? {
-    id: "",
-    title: "",
-    resource: "",
-    type: null,
-    edit: false,
-    createdTime: "",
-  };
-// const addImgResource = (resources: Resource[], )
+const setViewer = (resources: Resource[], id: string): Resource | null =>
+  resources.find((resource) => resource.id === id) ?? null
 
 // Zustand
 type Store = {
   resources: Resource[];
   newResource: string;
-  viewer: Resource;
+  viewer: Resource | null;
   addResource: (title?: string) => void;
   setNewResource: (resource: string) => void;
   update: (id: string, title: string) => void;
@@ -122,20 +114,13 @@ const useStore = create<Store>((set) => ({
   setView(id: string) {
     set((state) => ({
       ...state,
-      state.viewer: setViewer(state.resource, id)
+      viewer: setViewer(state.resources, id),
     }))
   },
   removeView(){
     set((state) => ({
       ...state,
-      state.viewer:  {
-        id: "",
-        title: "",
-        resource: "",
-        type: null,
-        edit: false,
-        createdTime: "",
-      }
+      viewer: null
     }))
   }
 }));
