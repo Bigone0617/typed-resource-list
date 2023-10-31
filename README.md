@@ -16,5 +16,5 @@ npm run start
 
 - 브라우저 -> http://localhost:3000
 
-### 완성된 프로젝트 사진
+### 완성된 프로젝트 사진 링크
 https://github.com/Bigone0617/typed-resource-list/issues/1
