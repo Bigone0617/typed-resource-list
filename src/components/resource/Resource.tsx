@@ -16,6 +16,11 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
   const onClickResource = () => {
     store.setView(props.id);
   };
+  
+  const onClickRemove = () => {
+    if(store.viewer?.id === props.id) store.removeView();
+    store.remove(props.id);
+  }
 
   return (
     <ResourceItem>
@@ -23,21 +28,13 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
         {props.edit ? (
           <>
             <FormWrapper>
-              <form onSubmit={(e) => onSubmitHandler(e)}>
-                <input
+              <Form onSubmit={(e) => onSubmitHandler(e)}>
+                <TitleInput
                   type="text"
-                  style={{
-                    display: "flex",
-                    width: "236px",
-                    height: "16px",
-                    alignItems: "center",
-                    border: "1px solid var(--system-blue-50, #38A5E1)",
-                    background: "var(--gray-gray-97, #F7F7F7)",
-                  }}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                ></input>
-              </form>
+                ></TitleInput>
+              </Form>
             </FormWrapper>
           </>
         ) : (
@@ -48,7 +45,7 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
         <div onClick={() => store.toggle(props.id)}>
           <TypedIcon icon="edit_19" style={{ fontSize: "19px" }} />
         </div>
-        <div onClick={() => store.remove(props.id)}>
+        <div onClick={onClickRemove}>
           <TypedIcon icon="trash_19" style={{ fontSize: "19px" }} />
         </div>
       </ButtonArea>
@@ -56,14 +53,22 @@ const ResourceDetail: React.FC<Resource> = ({ ...props }) => {
   );
 };
 
+const ResourceItem = styled.div`
+  width: 95%;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 1);
+`;
+
 const TextArea = styled.div`
-  width: 250px;
+  width: 100%;
   height: 60px;
 `;
 
 const FormWrapper = styled.div`
   display: flex;
-  width: 250px;
+  width: 100%;
   height: 30px;
   justify-content: center;
   align-items: center;
@@ -72,16 +77,21 @@ const FormWrapper = styled.div`
   background: var(--gray-gray-97, #f7f7f7);
 `;
 
-const ResourceItem = styled.div`
-  width: 260px;
-  height: 90px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 1);
-`;
+const Form = styled.form`
+  width: 95%;
+`
+
+const TitleInput = styled.input`
+  display: flex;
+  width: 100%;
+  height: 16px;
+  align-items: center;
+  border: 1px solid var(--system-blue-50, #38A5E1);
+  background: var(--gray-gray-97, #F7F7F7);
+`
 
 const TextRead = styled.div`
-  width: 236px;
+  width: 90%;
   height: 35px;
   color: #000;
   font-family: Roboto;
@@ -101,7 +111,7 @@ const TextRead = styled.div`
 `;
 
 const ButtonArea = styled.div`
-  width: 250px;
+  width: 95%;
   height: 30px;
   color: #000;
   display: flex;

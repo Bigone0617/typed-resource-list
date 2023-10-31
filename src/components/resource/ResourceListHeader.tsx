@@ -21,7 +21,7 @@ const ResourceListHeader: React.FC<{}> = () => {
 
 const ListHeader = styled.div`
   display: flex;
-  width: 280px;
+  width: 100%;
   height: 50px;
   justify-content: center;
   align-items: center;
@@ -29,6 +29,7 @@ const ListHeader = styled.div`
   flex-shrink: 0;
   background: var(--gray-gray-100, #fff);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
 `;
 
 export default ResourceListHeader;

@@ -16,7 +16,7 @@ const ViewerHeader = () => {
 
 const Header = styled.div`
   display: flex;
-  width: 919px;
+  width: 100%;
   height: 50px;
   align-items: center;
   gap: 329px;
@@ -26,7 +26,7 @@ const Header = styled.div`
 `;
 
 const Url = styled.div`
-  width: 539px;
+  width: 90%;
   color: #000;
   font-family: Roboto;
   font-size: 14px;

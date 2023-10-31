@@ -16,16 +16,16 @@ function App() {
 
 const PageLayout = styled.div`
   display: flex;
-  width: 1200px;
-  height: 800px;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: flex-start;
   background: var(--gray-gray-94, #f0f0f0);
 `;
 
 const DivisionLine = styled.div`
-  width: 1px;
-  height: 800px;
+  width: 0.25%;
+  height: 100%;
   flex-shrink: 0;
   background: #c4c4c4;
 `;

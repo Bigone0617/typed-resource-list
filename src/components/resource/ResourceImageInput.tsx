@@ -27,13 +27,11 @@ const ResourceImageInput: React.FC<{}> = () => {
   };
 
   return (
-    <>
-      <ButtonComponent
-        title="이미지 추가"
-        onChnageHandler={onChnageHandler}
-        type={InputEnum.IMG}
-      />
-    </>
+    <ButtonComponent
+      title="이미지 추가"
+      onChnageHandler={onChnageHandler}
+      type={InputEnum.IMG}
+    />
   );
 };
 

@@ -19,8 +19,8 @@ const ViewerLayout: React.FC<{}> = () => {
 };
 
 const ViewerWrapper = styled.div`
-  width: 919px;
-  height: 800px;
+  width: 69.75%;
+  height: 100%;
 `;
 
 export default ViewerLayout;

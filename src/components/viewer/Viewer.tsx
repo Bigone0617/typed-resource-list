@@ -8,14 +8,13 @@ const Viewer: React.FC<{}> = () => {
     <ViewerLayout>
       {
         store.viewer?.type === ResourceType.URL ? (
-          <iframe
+          <Iframe
             title={store.viewer?.title}
             src={store.viewer?.resource}
-            style={{ width: "919px", height: "750px" }}
           />
         ) : (
-          <img src={store.viewer?.resource} alt={store.viewer?.title} style={{ width: "919px", height: "750px" }}>
-          </img>
+          <Img src={store.viewer?.resource} alt={store.viewer?.title}>
+          </Img>
         )
       }
       
@@ -24,8 +23,18 @@ const Viewer: React.FC<{}> = () => {
 };
 
 const ViewerLayout = styled.div`
-  width: 919px;
-  height: 800px;
+  width: 100%;
+  height: 100%;
 `;
+
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+`
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
 export default Viewer;

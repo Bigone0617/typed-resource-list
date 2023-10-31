@@ -20,7 +20,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   type,
 }) => {
   return (
-    <div>
+    <ButtonWrapper>
       {type === InputEnum.IMG ? (
         <Button>
           <Label htmlFor="image-upload">{title}</Label>
@@ -38,14 +38,22 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
       ) : (
         <Button onClick={onClickHandler}>{title}</Button>
       )}
-    </div>
+    </ButtonWrapper>
   );
 };
 
+const ButtonWrapper = styled.div`
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const Button = styled.button`
   display: flex;
-  width: 125px;
-  height: 30px;
+  width: 100%;
+  height: 70%;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;

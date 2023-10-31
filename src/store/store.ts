@@ -72,14 +72,7 @@ type Store = {
 const useStore = create<Store>((set) => ({
   resources: [],
   newResource: "",
-  viewer: {
-    id: "",
-    title: "",
-    resource: "",
-    type: null,
-    edit: false,
-    createdTime: "",
-  },
+  viewer: null,
   addResource(title?: string) {
     set((state) => ({
       ...state,

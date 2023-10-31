@@ -12,3 +12,8 @@
 - zustand : 상태 관리
 - react-hot-toast : toast
 - uuid : resource id 생성
+
+
+**추가 기능**
+- 삭제하려는 리소스가 뷰어에 열려 있으면, 리소스 삭제 시 뷰어 닫음
+

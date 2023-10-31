@@ -14,8 +14,8 @@ const ResourceListLayout: React.FC<{}> = () => {
 
 const ListLayout = styled.div`
   display: flex;
-  width: 280px;
-  height: 800px;
+  width: 30%;
+  height: 100%;
   padding-bottom: 0px;
   flex-direction: column;
   align-items: center;
